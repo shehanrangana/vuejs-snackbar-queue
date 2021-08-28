@@ -1,7 +1,7 @@
 {
   "name": "vuejs-snackbar-queue",
   "description": "A Vuejs snackbar plugin that support multiple snackbars at one time",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "author": "Shehan Rangana",
   "repository": "https://github.com/shehanrangana/vuejs-snackbar-queue",
