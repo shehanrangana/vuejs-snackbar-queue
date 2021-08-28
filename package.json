@@ -1,0 +1,60 @@
+{
+  "name": "vuejs-snackbar-queue",
+  "description": "A Vuejs snackbar plugin that support multiple snackbars at one time",
+  "version": "1.0.0",
+  "private": false,
+  "author": "Shehan Rangana",
+  "repository": "https://github.com/shehanrangana/vuejs-snackbar-queue",
+  "bugs": "https://github.com/shehanrangana/vuejs-snackbar-queue/issues",
+  "keywords": [
+    "vue",
+    "snackbar",
+    "plugin",
+    "toast",
+    "notification",
+    "queue"
+  ],
+  "license": "MIT",
+  "files": [
+    "dist/*"
+  ],
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "build-library": "vue-cli-service build --target lib --name vuejs-snackbar-queue ./src/index.js",
+    "lint": "vue-cli-service lint"
+  },
+  "main": "./dist/vuejs-snackbar-queue.common.js",
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "vue": "^2.6.11"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
