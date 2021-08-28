@@ -93,7 +93,10 @@ export default {
 
     hide(snackbar) {
       const index = this.snackbars.indexOf(snackbar);
-      this.snackbars.splice(index, 1);
+
+      if (index >= 0) {
+        this.snackbars.splice(index, 1);
+      }
     },
 
     show(params) {
@@ -121,7 +124,7 @@ export default {
       if (color) newSnackbar.color = color;
 
       // push/unshift new snackbar to snackbars array
-      if (this.snackbars.length >= SnackbarPlugin.default.maxSnacks) {
+      if (this.snackbars.length === SnackbarPlugin.default.maxSnacks) {
         if (this.vertical === "top") {
           this.snackbars.shift();
         } else {
