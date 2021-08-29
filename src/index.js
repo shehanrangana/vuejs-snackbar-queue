@@ -28,6 +28,10 @@ const SnackbarPlugin = {
       show(params) {
         SnackbarPlugin.EventBus.$emit("show", params);
       },
+
+      hideAll() {
+        SnackbarPlugin.EventBus.$emit("hideAll");
+      },
     };
   },
 };

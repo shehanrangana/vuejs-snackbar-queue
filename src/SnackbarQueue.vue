@@ -99,6 +99,10 @@ export default {
       }
     },
 
+    hideAll() {
+      this.snackbars = [];
+    },
+
     show(params) {
       const {
         message,
@@ -153,6 +157,10 @@ export default {
     SnackbarPlugin.EventBus.$on("show", (params) => {
       this.show(params);
     });
+
+    SnackbarPlugin.EventBus.$on("hideAll", () => {
+      this.hideAll();
+    });
   },
 };
 </script>
@@ -197,6 +205,7 @@ export default {
   font-family: inherit;
   text-transform: uppercase;
   background-color: transparent;
+  font-size: 0.8rem;
   color: white;
   border: none;
   cursor: pointer;

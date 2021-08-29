@@ -29,7 +29,7 @@ Add the global component to your root component (`App.vue`)
 ```js
 <snackbar-queue/>
 ```
-Open a snackbar from your `.vue` files:
+Open a snackbar from your `.vue` files
 ```js
 this.$snackbar.show({
     message: "Message",
@@ -48,6 +48,10 @@ vue.$snackbar.show({
     color: "green",
     timeout: 5000
 });
+```
+Close all the snackbars by calling `hideAll()` method
+```js
+this.$snackbar.hideAll();
 ```
 
 ### Global Options
