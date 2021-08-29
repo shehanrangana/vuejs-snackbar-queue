@@ -13,6 +13,6 @@ git init
 git add -A
 git commit -m 'deploy'
 
-git push -f git@github.com:shehanrangana/vuejs-snackbar-queue.git demo:gh-pages
+git push -f git@github.com:shehanrangana/vuejs-snackbar-queue.git master:gh-pages
 
 cd -
