@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img alt="Vue logo" height="80" src="./assets/logo.png" />
-    <h1>Vue Snackbar Queue</h1>
+    <h1>Vuejs Snackbar Queue</h1>
 
     <div>
       <!-- Color -->
@@ -81,19 +81,19 @@
       <div style="display: flex; justify-content: center">
         <button
           class="btn-position"
-          @click="openSnackbar({ horizontal: 'left', vertical: 'top' })"
+          @click="openSnackbar({ horizontal: 'left', vertical: 'top' }, 11)"
         >
           Top Left
         </button>
         <button
           class="btn-position"
-          @click="openSnackbar({ horizontal: 'center', vertical: 'top' })"
+          @click="openSnackbar({ horizontal: 'center', vertical: 'top' }, 12)"
         >
           Top Center
         </button>
         <button
           class="btn-position"
-          @click="openSnackbar({ horizontal: 'right', vertical: 'top' })"
+          @click="openSnackbar({ horizontal: 'right', vertical: 'top' }, 13)"
         >
           Top Right
         </button>
@@ -101,23 +101,37 @@
       <div style="display: flex; justify-content: center">
         <button
           class="btn-position"
-          @click="openSnackbar({ horizontal: 'left', vertical: 'bottom' })"
+          @click="openSnackbar({ horizontal: 'left', vertical: 'bottom' }, 21)"
         >
           Bottom Left
         </button>
         <button
           class="btn-position"
-          @click="openSnackbar({ horizontal: 'center', vertical: 'bottom' })"
+          @click="
+            openSnackbar({ horizontal: 'center', vertical: 'bottom' }, 22)
+          "
         >
           Bottom Center
         </button>
         <button
           class="btn-position"
-          @click="openSnackbar({ horizontal: 'right', vertical: 'bottom' })"
+          @click="openSnackbar({ horizontal: 'right', vertical: 'bottom' }, 23)"
         >
           Bottom Right
         </button>
       </div>
+    </div>
+
+    <!-- Github star -->
+    <div style="position: absolute; top: 20px; left: 20px;">
+      <iframe
+        src="https://ghbtns.com/github-btn.html?user=shehanrangana&repo=vuejs-snackbar-queue&type=star&count=true"
+        frameborder="0"
+        scrolling="0"
+        width="170"
+        height="30"
+        title="GitHub"
+      ></iframe>
     </div>
 
     <snackbar-queue />
@@ -132,18 +146,36 @@ export default {
     return {
       color: "#1976D2",
       timeout: 3,
+      lastPosition: 0,
     };
   },
 
   methods: {
-    openSnackbar({ horizontal, vertical }) {
-      this.$snackbar.show({
-        message: "Put your message here",
-        color: this.color,
-        timeout: this.timeout * 1000,
-        horizontal,
-        vertical,
-      });
+    openSnackbar({ horizontal, vertical }, position) {
+      if (position !== this.lastPosition) {
+        if (window.innerWidth >= 600) {
+          this.$snackbar.hideAll();
+        } else {
+          const positionFirstChar = position.toString().charAt(0);
+          const lastPositionFirstChar = this.lastPosition.toString().charAt(0);
+
+          if (positionFirstChar !== lastPositionFirstChar) {
+            this.$snackbar.hideAll();
+          }
+        }
+      }
+
+      setTimeout(() => {
+        this.$snackbar.show({
+          message: "Your message here",
+          color: this.color,
+          timeout: this.timeout * 1000,
+          horizontal,
+          vertical,
+        });
+      }, 50);
+
+      this.lastPosition = position;
     },
   },
 };
@@ -168,6 +200,8 @@ export default {
   border-radius: 4px;
   min-height: 32px;
   cursor: pointer;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 .radio-wrapper {
   display: flex;
