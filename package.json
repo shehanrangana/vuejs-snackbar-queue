@@ -26,7 +26,6 @@
   },
   "main": "./dist/vuejs-snackbar-queue.common.js",
   "dependencies": {
-    "core-js": "^3.6.5",
     "vue": "^2.6.11"
   },
   "devDependencies": {

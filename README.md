@@ -68,6 +68,8 @@ this.$snackbar.hideAll();
 | timeout   | Number        | 4000 | Duration of the snackbar in ms. Use `0` to keep open indefinitely | 
 | horizontal   | String        | center | Horizontal position. Valid values : `center`, `left`, `right`| 
 | vertical   | String        | top | Vertical position. Valid values : `top`, `bottom` | 
+| closeText   | String        | Close | Label of the close button | 
+| onClose   | Function        |  | Specify a function that should be called when close the snackbar | 
 | transition   | String        |  | Transition name | 
 
 ## License

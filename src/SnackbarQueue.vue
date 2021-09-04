@@ -12,7 +12,9 @@
         ]"
       >
         <div class="vsq-message">{{ item.message }}</div>
-        <button class="vsq-btn-close" @click="hide(item)">close</button>
+        <button class="vsq-btn-close" @click="handleOnClose(item)">
+          {{ item.closeText }}
+        </button>
       </div>
     </transition-group>
   </div>
@@ -91,6 +93,15 @@ export default {
       el.style.height = height;
     },
 
+    handleOnClose(snackbar) {
+      if (typeof snackbar.onClose === "function") {
+        snackbar.onClose();
+        this.hide(snackbar);
+      } else {
+        this.hide(snackbar);
+      }
+    },
+
     hide(snackbar) {
       const index = this.snackbars.indexOf(snackbar);
 
@@ -108,6 +119,8 @@ export default {
         message,
         color,
         timeout = 4000,
+        closeText,
+        onClose,
         horizontal,
         vertical,
         transition,
@@ -122,10 +135,14 @@ export default {
         id: Date.now(),
         message: "",
         color: "#333333",
+        closeText: "Close",
+        onClose: {},
       };
 
       if (message) newSnackbar.message = message;
       if (color) newSnackbar.color = color;
+      if (closeText) newSnackbar.closeText = closeText;
+      if (onClose) newSnackbar.onClose = onClose;
 
       // push/unshift new snackbar to snackbars array
       if (this.snackbars.length === SnackbarPlugin.default.maxSnacks) {
@@ -208,10 +225,14 @@ export default {
   font-size: 0.8rem;
   color: white;
   border: none;
+  border-radius: 4px;
   cursor: pointer;
   height: fit-content;
   margin: auto auto auto 20px;
   padding: 4px;
+}
+.vsq-btn-close:hover {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 /* transitions */
 .vsq-list-enter-active,
