@@ -12,8 +12,8 @@
         ]"
       >
         <div class="vsq-message">{{ item.message }}</div>
-        <button class="vsq-btn-close" @click="handleOnClose(item)">
-          {{ item.closeText }}
+        <button class="vsq-btn-close" @click="handleOnAction(item)">
+          {{ item.actionText }}
         </button>
       </div>
     </transition-group>
@@ -93,9 +93,9 @@ export default {
       el.style.height = height;
     },
 
-    handleOnClose(snackbar) {
-      if (typeof snackbar.onClose === "function") {
-        snackbar.onClose();
+    handleOnAction(snackbar) {
+      if (typeof snackbar.onAction === "function") {
+        snackbar.onAction();
         this.hide(snackbar);
       } else {
         this.hide(snackbar);
@@ -119,8 +119,8 @@ export default {
         message,
         color,
         timeout = 4000,
-        closeText,
-        onClose,
+        actionText,
+        onAction,
         horizontal,
         vertical,
         transition,
@@ -135,14 +135,14 @@ export default {
         id: Date.now(),
         message: "",
         color: "#333333",
-        closeText: "Close",
-        onClose: {},
+        actionText: "Close",
+        onAction: {},
       };
 
       if (message) newSnackbar.message = message;
       if (color) newSnackbar.color = color;
-      if (closeText) newSnackbar.closeText = closeText;
-      if (onClose) newSnackbar.onClose = onClose;
+      if (actionText) newSnackbar.actionText = actionText;
+      if (onAction) newSnackbar.onAction = onAction;
 
       // push/unshift new snackbar to snackbars array
       if (this.snackbars.length === SnackbarPlugin.default.maxSnacks) {
